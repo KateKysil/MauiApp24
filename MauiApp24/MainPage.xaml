@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp24.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+        Padding="20"
+        Spacing="20">
+
+            <HorizontalStackLayout
+            Padding="0,10"
+            HorizontalOptions="FillAndExpand"
+            Spacing="10"
+            VerticalOptions="Start">
+
+                <Button
+                Text="Завантажити"
+                Clicked="OnLoadFileClicked"
+                HorizontalOptions="End" />
+
+                <Button
+                Text="Довідка"
+                Clicked="OnHelpClicked"
+                HorizontalOptions="End" />
+
+                <Button
+                Text="Save"
+                Clicked="OnHTMLButtonClicked"
+                HorizontalOptions="End"
+                />
+
+                <Button
+                Text="Вихід"
+                Clicked="OnExitClicked"
+                HorizontalOptions="End" />
+            </HorizontalStackLayout>
+            <Label x:Name="selectedLbl"/>
+            <Label Text="Оберіть тип парсера та атрибут для пошуку" FontSize="Medium" Margin="0,10,0,10"/>
+
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Start" HeightRequest="60">
+                <HorizontalStackLayout WidthRequest="250">
+                    <RadioButton x:Name="rbDOM" 
+                    Content="DOM" 
+                    GroupName="ParserType" 
+                    CheckedChanged="OnParserTypeChanged"
+                    IsChecked="True"
+                    />
+                    <RadioButton x:Name="rbSAX" 
+                    Content="SAX" 
+                    GroupName="ParserType" 
+                    CheckedChanged="OnParserTypeChanged" />
+                    <RadioButton x:Name="rbLINQ" 
+                    Content="LINQ" 
+                    GroupName="ParserType" 
+                    CheckedChanged="OnParserTypeChanged" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                    <Picker x:Name="DayPicker" 
+                        Title="День" 
+                        WidthRequest="150" 
+                        HeightRequest="60"
+                        IsEnabled="False"
+                        SelectedIndexChanged="OnDaySelected"/>
+                    <Picker x:Name="GroupPicker" 
+                        Title="Група" 
+                        WidthRequest="150" 
+                        HeightRequest="60"
+                        IsEnabled="False"
+                        SelectedIndexChanged="OnGroupSelected"/>
+                    <Picker x:Name="SubjectPicker" 
+                        Title="Предмет" 
+                        WidthRequest="150" 
+                        HeightRequest="60"
+                        IsEnabled="False"
+                        SelectedIndexChanged="OnSubjectSelected"/>
+                    <Picker x:Name="TeacherPicker" 
+                          Title="Викладач" 
+                          WidthRequest="150" 
+                          HeightRequest="60"
+                          IsEnabled="False"
+                          SelectedIndexChanged="OnTeacherSelected"/>
+                    <Picker x:Name="TimePicker" 
+                          Title="Час" 
+                          WidthRequest="150" 
+                          HeightRequest="60"
+                          IsEnabled="False"
+                          SelectedIndexChanged="OnTimeSelected"/>  
+                </HorizontalStackLayout>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Очистити" Clicked="OnClearClicked" />
+            </HorizontalStackLayout>
+
+            <ScrollView>
+                <Grid x:Name="ParsedTableGrid">
+                </Grid>
+            </ScrollView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
